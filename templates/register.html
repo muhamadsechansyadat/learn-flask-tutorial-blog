@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="col-md-7">
+   <div class="card">
+      <div class="card-header">
+        Join Today
+      </div>
+      <u></u>
+     <br>
+      <div class="card-body">
+        <form method="POST">
+          {{ form.hidden_tag() }}
+          <div class="form-group">
+            {{ form.username.label(for="username") }}
+              {% if form.username.errors %}
+                {{ form.username(class="form-control form-control-lg is-invalid", placeholder="Enter Username") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.username.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+              {% else %}
+                {{ form.username(class="form-control form-control-lg", placeholder="Enter Username") }}
+              {% endif %}
+          </div>
+          <div class="form-group">
+            {{ form.email.label(for="email") }}
+              {% if form.email.errors %}
+                {{ form.email(class="form-control form-control-lg is-invalid",id="email",type="email",placeholder="jhondoe@carsworld.id") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.email.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+              {% else %}
+                {{ form.email(class="form-control form-control-lg",id="email",type="email",placeholder="jhondoe@carsworld.id") }}
+              {% endif %}
+          </div>
+          <div class="form-group">
+            {{ form.password.label(for="password") }}
+              {% if form.password.errors %}
+                {{ form.password(class="form-control form-control-lg is-invalid",id="password",type="password",placeholder="Enter Password") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+              {% else %}
+                {{ form.password(class="form-control form-control-lg",id="password",type="password",placeholder="Enter Password") }}
+              {% endif %}
+          </div>
+          <div class="form-group">
+            {{ form.confirm_password.label(for="confirm_password") }}
+            {% if form.confirm_password.errors %}
+                {{ form.confirm_password(class="form-control form-control-lg is-invalid",id="confirm_password",type="password",placeholder="Confirm Password") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.confirm_password.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+              {% else %}
+                {{ form.confirm_password(class="form-control form-control-lg",id="password",type="password",placeholder="Confirm Password") }}
+              {% endif %}
+          </div>
+          <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+          </div>
+        </form>
+      </div>
+      <div class="card-footer"><small class="text-muted">Already Have An Account?<a href="{{ url_for('login') }}">Sign In!</a></small></div>
+   </div>
+   </div>
+{% endblock content %}
